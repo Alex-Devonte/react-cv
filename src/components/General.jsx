@@ -1,16 +1,15 @@
 import PropTypes from 'prop-types'
 import '../styles/styles.css'
+import { useState } from 'react';
 
 General.propTypes = {
     generalInfo: PropTypes.object.isRequired,
     setGeneralInfo: PropTypes.func.isRequired,
-    isSaved: PropTypes.bool.isRequired,
-    setIsSaved: PropTypes.func.isRequired,
-    editMode: PropTypes.bool.isRequired,
-    setEditMode: PropTypes.func.isRequired
 };
 
-function General({generalInfo, setGeneralInfo, isSaved, setIsSaved, editMode, setEditMode}) {
+function General({generalInfo, setGeneralInfo}) {
+    const [isSaved, setIsSaved] = useState(false);
+    const [editMode, setEditMode] = useState(true);
 
     const handleChange = (e) => {
         //Destructuring the 'name' & 'value' properties from the event target
