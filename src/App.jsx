@@ -8,14 +8,25 @@ function App() {
   const [editMode, setEditMode] = useState(true);
 
   const [generalInfo, setGeneralInfo] = useState({firstName: '', lastName: '', email: '', phone: ''});
-  const [experienceInfo, setExperienceInfo] = useState({jobs: [{jobTitle: '', companyName: '', jobDate: '', duties: []}]});
+  const [experienceInfo, setExperienceInfo] = useState({
+    jobs: [
+      {
+        jobTitle: '',
+        companyName: '',
+        jobDate: '',
+        duties: [],
+      }
+    ],
+  });
+  
 
   return (
     <>
       <Resume 
         generalInfo ={generalInfo}
-        experienceInfo={experienceInfo} 
-        setExperienceInfo={setExperienceInfo}/>
+        experienceInfo={experienceInfo}
+        setExperienceInfo={setExperienceInfo}
+      />
 
       <General
         generalInfo ={generalInfo} 
@@ -23,13 +34,17 @@ function App() {
         isSaved={isSaved} 
         setIsSaved={setIsSaved} 
         editMode={editMode} 
-        setEditMode={setEditMode}/>
+        setEditMode={setEditMode}
+      />
 
       <Experience 
         experienceInfo={experienceInfo} 
         setExperienceInfo={setExperienceInfo}
-        isSaved={isSaved} setIsSaved={setIsSaved} 
-        editMode={editMode} setEditMode={setEditMode}/>
+        isSaved={isSaved} 
+        setIsSaved={setIsSaved} 
+        editMode={editMode} 
+        setEditMode={setEditMode}
+      />
     </>
   )
 }
