@@ -11,7 +11,8 @@ function App() {
         id: 1,
         jobTitle: '',
         companyName: '',
-        jobDate: '',
+        dateFrom: '',
+        dateTo: '',
         duties: [''],
       }
     ],
