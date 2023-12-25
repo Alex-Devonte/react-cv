@@ -11,18 +11,36 @@ function Experience({experienceInfo, setExperienceInfo}) {
     const [isSaved, setIsSaved] = useState(false);
     const [editMode, setEditMode] = useState(true);
 
-    const handleJobChange = (e, jobId) => {
+    const handleJobChange = (e, jobId, dutyIndex) => {
         const {name, value} = e.target; 
-
-        //Update jobs array in experienceInfo prop
-        const updatedJobs = experienceInfo.jobs.map((job) => 
-            job.id === jobId ? {...job, [name]: value} : job
-        );            
-        
-        setExperienceInfo((prevExperience) => ({
+        //Check if a duty is being changed
+        if (name === 'duty') {
+            const updatedJobs = experienceInfo.jobs.map((job) =>
+            job.id === jobId
+              ? {
+                  ...job,
+                  duties: job.duties.map((duty, index) =>
+                    index === dutyIndex ? value : duty
+                  ),
+                }
+              : job
+          );
+    
+          setExperienceInfo((prevExperience) => ({
             ...prevExperience,
             jobs: updatedJobs,
-        }));                
+          }));
+        } else {
+            //Update jobs array in experienceInfo prop
+            const updatedJobs = experienceInfo.jobs.map((job) => 
+            job.id === jobId ? {...job, [name]: value} : job
+            );            
+
+            setExperienceInfo((prevExperience) => ({
+            ...prevExperience,
+            jobs: updatedJobs,
+            }));                
+        }  
     }
    
     const handleEdit = () => {
@@ -52,6 +70,19 @@ function Experience({experienceInfo, setExperienceInfo}) {
         }));
    }
 
+   //Create new duty for specific job
+   const addDuty = (jobId) => {
+        //Create new jobs array where the duties array of that specific job is updated
+        const updatedJobs = experienceInfo.jobs.map((job) =>
+        job.id === jobId ? { ...job, duties: [...job.duties, ''] } : job
+    );
+
+    setExperienceInfo((prevExperience) => ({
+        ...prevExperience,
+        jobs: updatedJobs,
+    }));
+  };
+
    const renderJobField = (job, key) => {
         return (
             <div key={key} className="jobField">
@@ -61,8 +92,12 @@ function Experience({experienceInfo, setExperienceInfo}) {
                 <input type="date" name="dateFrom" onChange={(e) => handleJobChange(e, job.id)} value={job.dateFrom}/>
                 <label htmlFor="dateTo">To</label>
                 <input type="date" name="dateTo" onChange={(e) => handleJobChange(e, job.id)} value={job.dateTo}/>
-                <textarea name="duty" placeholder="Duty..." onChange={(e) => handleJobChange(e, job.id)} value={job.duties}/>
-                <button type="button" className="add-duty-button">Add job duty</button>
+                {job.duties.map((duty, index) => {
+                    return (
+                        <textarea key={index} name="duty" placeholder="Job duty..." value={duty} onChange={(e) => handleJobChange(e, job.id, index)}/>
+                    )
+                })}
+                <button type="button" className="add-duty-button" onClick={() => addDuty(job.id)}>Add job duty</button>
             </div>
         )
    }
