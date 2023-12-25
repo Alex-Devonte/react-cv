@@ -22,7 +22,6 @@ function Resume({generalInfo, experienceInfo}) {
                 <h2 className="section-header">Experience</h2>
                 {experienceInfo.jobs.map((job, key) => {
                     const jobDates = job.dateFrom + ' - ' + job.dateTo;
-                    console.log(job);
                     return (
                         <div key={key} className="job">
                             <p className="job-title">{job.jobTitle || 'Title'}</p>
