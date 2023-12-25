@@ -89,9 +89,9 @@ function Experience({experienceInfo, setExperienceInfo}) {
                 <input type="text" name="jobTitle" placeholder="Job title..." onChange={(e) => handleJobChange(e, job.id)} value={job.jobTitle}/>
                 <input type="text" name="companyName" placeholder="Company name..." onChange={(e) => handleJobChange(e, job.id)} value={job.companyName}/>
                 <label htmlFor="dateFrom">From</label>
-                <input type="date" name="dateFrom" onChange={(e) => handleJobChange(e, job.id)} value={job.dateFrom}/>
+                <input type="date" name="dateFrom" onChange={(e) => handleJobChange(e, job.id)} value={job.dateFrom || ''}/>
                 <label htmlFor="dateTo">To</label>
-                <input type="date" name="dateTo" onChange={(e) => handleJobChange(e, job.id)} value={job.dateTo}/>
+                <input type="date" name="dateTo" onChange={(e) => handleJobChange(e, job.id)} value={job.dateTo || ''}/>
                 {job.duties.map((duty, index) => {
                     return (
                         <textarea key={index} name="duty" placeholder="Job duty..." value={duty} onChange={(e) => handleJobChange(e, job.id, index)}/>
