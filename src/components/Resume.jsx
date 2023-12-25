@@ -6,8 +6,9 @@ Resume.propTypes = {
 };
 
 function Resume({generalInfo}) {
-    console.log('RESUME COMPONENT: ' , generalInfo);
+
     const fullName = generalInfo.firstName + ' ' + generalInfo.lastName;
+    
     return (
         <div id="resume">
             <section className="general-section">
