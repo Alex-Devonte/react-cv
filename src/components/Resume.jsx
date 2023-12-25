@@ -2,13 +2,13 @@ import '../styles/resume.css'
 import PropTypes from 'prop-types'
 
 Resume.propTypes = {
-    generalInfo: PropTypes.object.isRequired
+    generalInfo: PropTypes.object.isRequired,
+    experienceInfo: PropTypes.object.isRequired
 };
 
-function Resume({generalInfo}) {
-
+function Resume({generalInfo, experienceInfo}) {
     const fullName = generalInfo.firstName + ' ' + generalInfo.lastName;
-    
+
     return (
         <div id="resume">
             <section className="general-section">
@@ -20,16 +20,24 @@ function Resume({generalInfo}) {
             </section>
             <section className="experience-section">
                 <h2 className="section-header">Experience</h2>
-                <div className="job">
-                    <p className="job-title">Title</p>
-                    <p className="company-name">Company Name</p>
-                    <p className="job-date">12/12/23 - Present</p>
-                    <ul className="job-duties">
-                        <li className="duty">Task 1</li>
-                        <li className="duty">Task 2</li>
-                        <li className="duty">Task 3</li>
-                    </ul>
-                </div>
+                {experienceInfo.jobs.map((job, key) => {
+                    const jobDates = job.dateFrom + ' - ' + job.dateTo;
+                    console.log(job);
+                    return (
+                        <div key={key} className="job">
+                            <p className="job-title">{job.jobTitle || 'Title'}</p>
+                            <p className="company-name">{job.companyName || 'Company Name'}</p>
+                            <p className="job-date">{jobDates}</p>
+                            <ul className="job-duties">
+                                {job.duties.map((duty, index) => (
+                                     <li key={index} className="duty">
+                                     {duty || 'Task ' + (index + 1)}
+                                   </li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}       
+                )}
             </section>
             <section className="education-section">
                 <h2 className="section-header">Education</h2>
