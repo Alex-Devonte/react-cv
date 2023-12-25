@@ -8,10 +8,11 @@ function App() {
   const [experienceInfo, setExperienceInfo] = useState({
     jobs: [
       {
+        id: 1,
         jobTitle: '',
         companyName: '',
         jobDate: '',
-        duties: [],
+        duties: [''],
       }
     ],
   });
