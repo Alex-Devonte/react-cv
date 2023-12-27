@@ -3,10 +3,11 @@ import PropTypes from 'prop-types'
 
 Resume.propTypes = {
     generalInfo: PropTypes.object.isRequired,
-    experienceInfo: PropTypes.object.isRequired
+    experienceInfo: PropTypes.object.isRequired,
+    educationInfo: PropTypes.object.isRequired
 };
 
-function Resume({generalInfo, experienceInfo}) {
+function Resume({generalInfo, experienceInfo, educationInfo}) {
     const fullName = generalInfo.firstName + ' ' + generalInfo.lastName;
 
     return (
@@ -22,7 +23,6 @@ function Resume({generalInfo, experienceInfo}) {
                 <h2 className="section-header">Experience</h2>
                 {experienceInfo.jobs.map((job, key) => {
                     const jobDates = job.dateFrom + ' - ' + job.dateTo;
-                    console.log(job);
                     return (
                         <div key={key} className="job">
                             <p className="job-title">{job.jobTitle || 'Title'}</p>
@@ -41,11 +41,15 @@ function Resume({generalInfo, experienceInfo}) {
             </section>
             <section className="education-section">
                 <h2 className="section-header">Education</h2>
-                <div className="education">
-                    <p className="degree">Degree/Field of Study</p>
-                    <p className="school">School/University</p>
-                    <p className="education-date">August 1 - August 3</p>
-                </div>
+                {educationInfo.education.map((education, key) => {
+                    return (
+                        <div key={key} className="education">
+                            <p className="school">{education.schoolName || 'School/University'}</p>
+                            <p className="degree">{education.degree || 'Degree/Field of Study'}</p>
+                            <p className="location">{education.location || 'Location'}</p>
+                        </div>
+                    )
+                })}
             </section>
         </div>
     )
