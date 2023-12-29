@@ -37,34 +37,42 @@ function General({generalInfo, setGeneralInfo}) {
                 <h2>General Info</h2>
                 {!isSaved && editMode ? (
                     <form id="general-info-form">
-                        <input
-                            type="text"
-                            name="firstName"
-                            placeholder="First Name"
-                            value={generalInfo.firstName}
-                            onChange={(e) => handleChange(e)}
+                        <div className="first-name">
+                            <input
+                                type="text"
+                                name="firstName"
+                                placeholder="First Name"
+                                value={generalInfo.firstName}
+                                onChange={(e) => handleChange(e)}
+                                />
+                        </div>
+                        <div className="last-name">
+                            <input
+                                type="text"
+                                name="lastName"
+                                placeholder="Last Name"
+                                value={generalInfo.lastName}
+                                onChange={handleChange}
                             />
-                        <input
-                            type="text"
-                            name="lastName"
-                            placeholder="Last Name"
-                            value={generalInfo.lastName}
-                            onChange={handleChange}
-                        />
-                        <input
-                            type="email"
-                            name="email"
-                            placeholder="Email"
-                            value={generalInfo.email}
-                            onChange={handleChange}
-                        />
-                        <input
-                            type="tel"
-                            name="phone"
-                            placeholder="Phone Number"
-                            value={generalInfo.phone}
-                            onChange={handleChange}
-                        />
+                        </div>
+                        <div className="email">
+                            <input
+                                type="email"
+                                name="email"
+                                placeholder="Email"
+                                value={generalInfo.email}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className="phone">
+                            <input
+                                type="tel"
+                                name="phone"
+                                placeholder="Phone Number"
+                                value={generalInfo.phone}
+                                onChange={handleChange}
+                            />
+                        </div>
                         <button type="button" className="save-btn" id="general-save-btn" onClick={handleSubmit}>Save General Info</button>
                     </form>
                 ): (

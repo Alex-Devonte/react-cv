@@ -38,7 +38,7 @@ function Education({educationInfo, setEducationInfo}) {
 
     const renderEducationField = (education, key) => {
         return (
-            <div key={key}>
+            <div key={key} className="education-field">
                 <input
                     type="text"
                     name="schoolName"
@@ -87,8 +87,10 @@ function Education({educationInfo, setEducationInfo}) {
                        {educationInfo.education.map((education, key) => {
                             return (renderEducationField(education, key));
                        })}
-                        <button type="button" className="add-education-button" onClick={addEducation}>Add Education</button>
-                        <button type="button" className="save-btn" id="education-save-btn" onClick={handleSubmit}>Save Education Info</button>
+                        <div className="button-container">
+                            <button type="button" className="add-education-button" onClick={addEducation}>Add Education</button>
+                            <button type="button" className="save-btn" id="education-save-btn" onClick={handleSubmit}>Save Education Info</button>
+                        </div>
                     </form>
                 ): (
                     <>

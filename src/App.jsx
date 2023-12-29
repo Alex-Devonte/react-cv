@@ -32,28 +32,29 @@ function App() {
   });
 
   return (
-    <>
-      <Resume 
-        generalInfo ={generalInfo}
-        experienceInfo={experienceInfo}
-        educationInfo={educationInfo}
-      />
-
-      <General
-        generalInfo ={generalInfo} 
-        setGeneralInfo={setGeneralInfo} 
-      />
-
-      <Experience 
-        experienceInfo={experienceInfo} 
-        setExperienceInfo={setExperienceInfo}
-      />
-
-      <Education
-        educationInfo={educationInfo}
-        setEducationInfo={setEducationInfo}
-      />
-    </>
+    <div id="page-container">
+      <div id="forms-container">
+        <General
+          generalInfo ={generalInfo}
+          setGeneralInfo={setGeneralInfo}
+        />
+        <Experience
+          experienceInfo={experienceInfo}
+          setExperienceInfo={setExperienceInfo}
+        />
+        <Education
+          educationInfo={educationInfo}
+          setEducationInfo={setEducationInfo}
+        />
+      </div>
+      <div id="resume-container">
+        <Resume
+          generalInfo ={generalInfo}
+          experienceInfo={experienceInfo}
+          educationInfo={educationInfo}
+        />
+      </div>
+    </div>
   )
 }
 

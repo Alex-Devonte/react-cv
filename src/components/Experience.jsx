@@ -85,16 +85,26 @@ function Experience({experienceInfo, setExperienceInfo}) {
 
    const renderJobField = (job, key) => {
         return (
-            <div key={key} className="jobField">
-                <input type="text" name="jobTitle" placeholder="Job title..." onChange={(e) => handleJobChange(e, job.id)} value={job.jobTitle}/>
-                <input type="text" name="companyName" placeholder="Company name..." onChange={(e) => handleJobChange(e, job.id)} value={job.companyName}/>
-                <label htmlFor="dateFrom">From</label>
-                <input type="date" name="dateFrom" onChange={(e) => handleJobChange(e, job.id)} value={job.dateFrom || ''}/>
-                <label htmlFor="dateTo">To</label>
-                <input type="date" name="dateTo" onChange={(e) => handleJobChange(e, job.id)} value={job.dateTo || ''}/>
+            <div key={key} className="job-field">
+                <div className="job-title">
+                    <input type="text" name="jobTitle" placeholder="Job title..." onChange={(e) => handleJobChange(e, job.id)} value={job.jobTitle}/>
+                </div>
+                <div className="company-name">
+                    <input type="text" name="companyName" placeholder="Company name..." onChange={(e) => handleJobChange(e, job.id)} value={job.companyName}/>
+                </div>
+                <div className="date-from">
+                    <label htmlFor="dateFrom">From</label>
+                    <input type="date" name="dateFrom" onChange={(e) => handleJobChange(e, job.id)} value={job.dateFrom || ''}/>
+                </div>
+                <div className="date-to">
+                    <label htmlFor="dateTo">To</label>
+                    <input type="date" name="dateTo" onChange={(e) => handleJobChange(e, job.id)} value={job.dateTo || ''}/>
+                </div>
                 {job.duties.map((duty, index) => {
                     return (
-                        <textarea key={index} name="duty" placeholder="Job duty..." value={duty} onChange={(e) => handleJobChange(e, job.id, index)}/>
+                        <div key={index} className="job-duty">
+                            <textarea key={index} name="duty" placeholder="Job duty..." value={duty} onChange={(e) => handleJobChange(e, job.id, index)}/>
+                        </div>
                     )
                 })}
                 <button type="button" className="add-duty-button" onClick={() => addDuty(job.id)}>Add job duty</button>
@@ -107,12 +117,14 @@ function Experience({experienceInfo, setExperienceInfo}) {
             <div id="experience-form-container" className="form-container">
                 <h2>Experience Info</h2>
                 {!isSaved && editMode ? (
-                    <form id="experience-form">
+                    <form id="experience-info-form">
                         {experienceInfo.jobs.map((job, key) => { 
                             return (renderJobField(job, key));
                         })}
-                        <button type="button" className="add-job-button" onClick={addJob}>Add Job</button>
-                        <button type="button" className="save-btn" id="experience-save-btn" onClick={handleSubmit}>Save Experience Info</button>
+                        <div className="button-container">
+                            <button type="button" className="add-job-button" onClick={addJob}>Add Job</button>
+                            <button type="button" className="save-btn" id="experience-save-btn" onClick={handleSubmit}>Save Experience Info</button>
+                        </div>
                     </form>
                 ): (
                     <>
