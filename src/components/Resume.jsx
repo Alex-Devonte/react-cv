@@ -13,10 +13,12 @@ function Resume({generalInfo, experienceInfo, educationInfo}) {
     return (
         <div id="resume">
             <section className="general-section">
-                <h1 className="name">{fullName.trim() || 'John Doe'}</h1>
-                <div className="contact-info">
-                    <div className="phone-info">{generalInfo.phone ||  '555-555-5555'}</div>
-                    <div className="email-info">{generalInfo.email || 'email@gmail.com'}</div>
+                <div className="header">
+                    <h1 className="name">{fullName.trim() || 'John Doe'}</h1>
+                    <div className="contact-info">
+                        <div className="phone-info">{generalInfo.phone ||  '555-555-5555'}</div>
+                        <div className="email-info">{generalInfo.email || 'email@gmail.com'}</div>
+                    </div>
                 </div>
             </section>
             <section className="experience-section">

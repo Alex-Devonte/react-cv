@@ -1,4 +1,57 @@
 #resume {
+    background-color: #F5F5F5;
     border: 1px solid #000;
-    padding: 15px;
+    color: #000; 
+}
+
+.header {
+    background-color: #020249;
+    color: #F5F5F5;
+    margin-bottom: 55px;
+    padding: 10px;
+    text-align: center;
+}
+
+.contact-info {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    margin: 15px;
+}
+
+.experience-section, .education-section {
+ 
+    padding: 25px;
+}
+
+.section-header {
+    border-bottom: 5px solid #ccc;
+    color: #020249;
+    margin-bottom: 15px;
+    padding: 5px;
+}
+
+.job {
+    
+}
+
+.job-title, .school {
+    font-weight: bold;
+}
+
+.company-name, .degree {
+    font-style: italic;
+}
+
+.job-date, .location {
+    font-style: italic;
+    font-weight: bold;
+}
+
+.job-duties {
+    margin: 0 30px ;
+}
+
+.education {
+    margin: 20px 0;
 }
